@@ -97,7 +97,7 @@ public class YallaSa7elDBHelper extends SQLiteOpenHelper {
     /*
     Retrieve spaces that match the given destination [and number of rooms]
      */
-    public ArrayList<Space> querySpace(String pDestination, String pNumberOfRooms , SQLiteDatabase database ) {
+    public ArrayList<Space> querySpace(String pDestination, Integer pNumberOfRooms , SQLiteDatabase database ) {
         Log.d(TAG, "querySpace method executes");
 
         // Construct the where clause based on the given info
@@ -105,14 +105,14 @@ public class YallaSa7elDBHelper extends SQLiteOpenHelper {
         if ( pNumberOfRooms != null ) {
             Log.d(TAG, "numberOfRooms is given");
             // Destination as well as NumberOfRooms
-            where = YallaSa7elContract.Space.COLUMN_DESTINATION + "=" + pDestination
+            where = YallaSa7elContract.Space.COLUMN_DESTINATION + "=\"" + pDestination + "\""
                     + " AND " + YallaSa7elContract.Space.COLUMN_NUMBER_OF_ROOMS + "=" +
-            pNumberOfRooms;
+            pNumberOfRooms + "";
         }
         else {
             Log.d(TAG, "numberOfRooms is not given");
             // Destination only
-            where = YallaSa7elContract.Space.COLUMN_DESTINATION + "=" + pDestination;
+            where = YallaSa7elContract.Space.COLUMN_DESTINATION + "=\"" + pDestination + "\"";
         }
 
         // Get all columns
