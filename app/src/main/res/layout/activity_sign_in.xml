@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SignInActivity">
+
+
+    <android.support.design.widget.TextInputLayout
+        style="@style/RegisterFields">
+        <EditText
+            android:id="@+id/login_username_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/username" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        style="@style/RegisterFields">
+        <EditText
+            android:id="@+id/login_password_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="@string/password" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/login_error_text_view"
+        style="@style/RegisterFields"
+        android:visibility="gone"
+        android:textColor="@color/red" />
+
+
+    <Button
+        android:id="@+id/login_button"
+        style="@style/RegisterFields"
+        android:layout_marginTop="@dimen/default16_margin"
+        android:text="@string/sign_in_up" />
+
+
+</LinearLayout>

@@ -30,6 +30,9 @@ public class YallaSa7elDBHelper extends SQLiteOpenHelper {
         createSpaceTable(database);
         createUsersTable(database);
         createSignedInStateTable(database);
+
+        // Insert initial spaces into Space table
+        initializeSpaceTable(database);
     }
 
 
@@ -326,7 +329,9 @@ public class YallaSa7elDBHelper extends SQLiteOpenHelper {
 
         // Execute Create table statement
         database.execSQL(SQL_CREATE_TABLE_SIGNED_IN_STATE);
+    }
 
-
+    private void initializeSpaceTable(SQLiteDatabase database) {
+        // TODO: Populate the Space table with the what attached in the mail
     }
 }

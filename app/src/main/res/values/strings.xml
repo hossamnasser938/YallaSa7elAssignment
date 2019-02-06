@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">YallaSa7elAssignment</string>
+    <string name="home">Home</string>
+    <string name="sign_in_up">Sign In/UP</string>
+    <string name="welcome_first_time">Welcome for the first time in YallaSa7el</string>
+    <string name="welcome_back">Welcome Back to YallaSa7el</string>
+    <string name="username">UserName</string>
+    <string name="password">Password</string>
+    <string name="empty_email_password">Please Enter your email and password</string>
+    <string name="error_signing_in">Unexpected error occurred while signing in, Please try again</string>
+    <string name="error_signing_out">Unexpected error occurred while signing out, Please try again</string>
+    <string name="sign_out">Sign Out</string>
 </resources>

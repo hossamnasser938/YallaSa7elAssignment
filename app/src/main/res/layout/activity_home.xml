@@ -7,25 +7,10 @@
     tools:context=".HomeActivity">
 
     <TextView
-        android:id="@+id/test1_text"
+        android:id="@+id/center_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:layout_centerInParent="true" />
-
-    <TextView
-        android:id="@+id/test2_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_below="@id/test1_text" />
-
-    <TextView
-        android:id="@+id/test3_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_below="@id/test2_text" />
-
 
 </RelativeLayout>
