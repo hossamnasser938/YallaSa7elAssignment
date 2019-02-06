@@ -39,6 +39,34 @@ public class YallaSa7elDBHelper extends SQLiteOpenHelper {
     }
 
 
+    public boolean signIn( User user, SQLiteDatabase database ) {
+        Log.d(TAG, "signIn method executes");
+        return checkIfUserExists( user, database );
+    }
+
+
+    public Boolean signUp( User user, SQLiteDatabase database ) {
+        Log.d(TAG, "signUp method executes");
+        boolean userExists = checkIfUserExists( user, database );
+
+        if( userExists ) {
+            Log.d(TAG, "User already exists");
+            // return null indicating that the user already has an account
+            return null;
+        }
+
+        Log.d(TAG, "User does not exist -> insert and set state");
+        // Insert user and set the signed in state
+        return insertUser( user, database ) && setSignedInState(database);
+    }
+
+
+    public boolean signout(SQLiteDatabase database) {
+        Log.d(TAG, "signOut method executes");
+        return clearSignedInState( database );
+    }
+
+
     public boolean insertSpace( Space space, SQLiteDatabase database ) {
         Log.d(TAG, "insertSpace method executes");
 
@@ -196,7 +224,25 @@ public class YallaSa7elDBHelper extends SQLiteOpenHelper {
             return true;
         }
         else {
-            Log.d(TAG, "Cursor has !1 elements ");
+            Log.e(TAG, "Cursor has !1 elements ");
+            cursor.close();
+            return false;
+        }
+    }
+
+
+    public boolean checkSignedInState(SQLiteDatabase database) {
+        Log.d(TAG, "checkSignedInState method executes");
+
+        Cursor cursor = database.query( SignedInState.TABLE_NAME, null, null, null, null, null, null );
+
+        if( cursor.getCount() == 1 ) {
+            Log.d(TAG, "Cursor has exactly 1 element");
+            cursor.close();
+            return true;
+        }
+        else {
+            Log.e(TAG, "Cursor has !1 elements");
             cursor.close();
             return false;
         }
