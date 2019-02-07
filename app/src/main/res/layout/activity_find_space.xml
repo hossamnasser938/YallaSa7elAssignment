@@ -9,7 +9,7 @@
 
 
     <android.support.design.widget.TextInputLayout
-        style="@style/find_space_field">
+        style="@style/space_field">
 
         <EditText
             android:id="@+id/query_destination_edit_text"
@@ -22,7 +22,7 @@
 
 
     <android.support.design.widget.TextInputLayout
-        style="@style/find_space_field">
+        style="@style/space_field">
 
         <EditText
             android:id="@+id/query_rooms_edit_text"
@@ -40,6 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/default16_margin"
         android:layout_marginRight="@dimen/default16_margin"
+        android:textColor="@color/red"
         android:visibility="gone" />
 
 

@@ -66,7 +66,7 @@ class HomeActivity : AppCompatActivity() {
                 navigateToFindSpace()
             }
             R.id.add_space -> {
-
+                navigateToAddSpace()
             }
         }
         return true
@@ -80,6 +80,11 @@ class HomeActivity : AppCompatActivity() {
 
     private fun navigateToFindSpace() {
         val intent = Intent( this, FindSpaceActivity::class.java )
+        startActivity( intent )
+    }
+
+    private fun navigateToAddSpace() {
+        val intent = Intent( this, AddSpaceActivity::class.java )
         startActivity( intent )
     }
 }

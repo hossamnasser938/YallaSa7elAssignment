@@ -9,12 +9,15 @@
     <string name="empty_email_password">Please enter your email and password</string>
     <string name="error_signing_in">Unexpected error occurred while signing in, Please try again</string>
     <string name="error_signing_out">Unexpected error occurred while signing out, Please try again</string>
+    <string name="error_inserting_space">Unexpected error occurred while inserting space, Please try again</string>
+    <string name="space_inserted">Space Inserted Successfully</string>
     <string name="sign_out">Sign Out</string>
     <string name="find_space">Find Space</string>
     <string name="add_space">Add Space</string>
     <string name="your_destination">Your Destination</string>
     <string name="preferred_rooms">Preferred Number of Rooms</string>
     <string name="find">Find</string>
+    <string name="title_">Title:</string>
     <string name="destination_">Destination:</string>
     <string name="address_">Address:</string>
     <string name="rooms_">Number of Rooms:</string>
@@ -25,4 +28,6 @@
     <string name="empty_destination">Please enter your destination</string>
     <string name="rooms_not_number">Please enter a valid number of rooms</string>
     <string name="empty_list_text">No spaces matched, Try different destination or number of rooms</string>
+    <string name="empty_add_field">Please fill in all required fields: Title, Destination, Number of Rooms, Number of Bathrooms, Base Price, Owner Name, and Owner Mobile Number</string>
+    <string name="not_numeric_add_fields">Some fields require numeric valid values inclusing: Number of Rooms, Mumber of Bathrooms, and Base Price</string>
 </resources>

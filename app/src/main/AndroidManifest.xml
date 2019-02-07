@@ -21,7 +21,8 @@
         <activity
             android:name=".SignInActivity"
             android:label="@string/sign_in_up" />
-        <activity android:name=".FindSpaceActivity"></activity>
+        <activity android:name=".FindSpaceActivity" />
+        <activity android:name=".AddSpaceActivity"></activity>
     </application>
 
 </manifest>
