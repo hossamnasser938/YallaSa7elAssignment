@@ -333,5 +333,15 @@ public class YallaSa7elDBHelper extends SQLiteOpenHelper {
 
     private void initializeSpaceTable(SQLiteDatabase database) {
         // TODO: Populate the Space table with the what attached in the mail
+        // For testing
+        Space temp1 = new Space("Apartment at Taha", "Taha", "Menia", 3, 2, 5000, "Ahmed Hamdy", "010");
+        Space temp2 = new Space("Villa at Taha", "Taha", "Menia", 10, 4, 20000, "Abo Elshiekh", "010");
+        Space temp3 = new Space("Apartment at Bouga", "Bouga", "Menia", 2, 1, 2000, "Hossam Naser", "010");
+        Space temp4 = new Space("Villa at Bouga", "Bouga", "Menia", 5, 2, 10000, "Ahmed Hamdy", "010");
+
+        insertSpace(temp1, database);
+        insertSpace(temp2, database);
+        insertSpace(temp3, database);
+        insertSpace(temp4, database);
     }
 }

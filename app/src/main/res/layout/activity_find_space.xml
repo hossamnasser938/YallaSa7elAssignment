@@ -7,45 +7,31 @@
     android:orientation="vertical"
     tools:context=".FindSpaceActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="@dimen/default16_margin">
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="0dp"
+    <android.support.design.widget.TextInputLayout
+        style="@style/find_space_field">
+
+        <EditText
+            android:id="@+id/query_destination_edit_text"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:layout_marginEnd="@dimen/default8_margin"
-            android:layout_marginRight="@dimen/default8_margin">
+            android:inputType="text"
+            android:hint="@string/your_destination" />
 
-            <EditText
-                android:id="@+id/query_destination_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="@string/your_destination" />
+    </android.support.design.widget.TextInputLayout>
 
-        </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="0dp"
+    <android.support.design.widget.TextInputLayout
+        style="@style/find_space_field">
+
+        <EditText
+            android:id="@+id/query_rooms_edit_text"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="@dimen/default8_margin"
-            android:layout_marginLeft="@dimen/default8_margin">
+            android:inputType="number"
+            android:hint="@string/preferred_rooms" />
 
-            <EditText
-                android:id="@+id/query_rooms_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:hint="@string/preferred_rooms" />
-
-        </android.support.design.widget.TextInputLayout>
-
-    </LinearLayout>
+    </android.support.design.widget.TextInputLayout>
 
 
     <TextView
@@ -78,8 +64,9 @@
             android:id="@+id/query_empty_list_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true" />
-
+            android:layout_centerInParent="true"
+            android:text="@string/empty_list_text"
+            android:visibility="gone" />
 
     </RelativeLayout>
 

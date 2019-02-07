@@ -26,6 +26,7 @@ class FindSpaceActivity : AppCompatActivity() {
     private fun handleFindButton() {
         query_find_btn.setOnClickListener {
             query_error_text.visibility = View.GONE
+            query_empty_list_text.visibility = View.GONE
 
             // Retrieve user inputs
             val pDestination = query_destination_edit_text.text.toString().trim()
@@ -49,14 +50,18 @@ class FindSpaceActivity : AppCompatActivity() {
                 }
             }
 
-            // Query the database, create the adapter, and bind it with the list view
+            // Query the database
             val spaceList = dBHelper.querySpace( pDestination, pRoomsInt, database )
-            val adapter = SpaceAdapter( this, spaceList )
-            query_list.adapter = adapter
 
             // Handle empty list
-            query_list.emptyView = query_empty_list_text
-            query_empty_list_text.text = getString( R.string.empty_list_text )
+            if ( spaceList == null ) {
+                query_empty_list_text.visibility = View.VISIBLE
+            }
+            else {
+                // create the adapter, and bind it with the list view
+                val adapter = SpaceAdapter( this, spaceList )
+                query_list.adapter = adapter
+            }
         }
     }
 
