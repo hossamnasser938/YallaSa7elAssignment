@@ -1,26 +1,45 @@
 package com.example.android.yallasa7elassignment
 
-import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import com.example.android.yallasa7elassignment.data.User
 import com.example.android.yallasa7elassignment.data.YallaSa7elDBHelper
-import kotlinx.android.synthetic.main.activity_sign_in.*
+import kotlinx.android.synthetic.main.fragment_signin.*
 
-class SignInActivity : AppCompatActivity() {
+class SignInFragment : Fragment() {
 
-    private val TAG = "SignInActivity"
+    private val TAG = "SignInFragment"
+
     private lateinit var dBHelper: YallaSa7elDBHelper
     private lateinit var database: SQLiteDatabase
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
+    private lateinit var transition: HomeFragment.HomeTransitionInterface
 
-        dBHelper = YallaSa7elDBHelper( this )
+    companion object {
+        fun newInstance() : SignInFragment{
+            val signinFragment = SignInFragment()
+            return signinFragment
+        }
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate( R.layout.fragment_signin, container, false )
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //Hide options menu
+        setHasOptionsMenu( false )
+
+        transition = activity as HomeFragment.HomeTransitionInterface
+
+        dBHelper = YallaSa7elDBHelper( activity )
         database = dBHelper.writableDatabase
 
         handleSignInUPButton()
@@ -46,8 +65,8 @@ class SignInActivity : AppCompatActivity() {
             val user = User( userName, password )
             if ( dBHelper.signIn( user, database ) ) {
                 Log.d( TAG, "Signed in successfully" )
-                // Signed in successfully, give him a welcome back
-                navigateToHome( R.string.welcome_back )
+                // Signed in successfully, navigate to Home fragment
+                transition.openFragment( HomeFragment.newInstance( R.string.welcome_back ) )
             }
             else {
                 val signUpResponse = dBHelper.signUp( user, database )
@@ -59,9 +78,8 @@ class SignInActivity : AppCompatActivity() {
                 else {
                     if ( signUpResponse ) {
                         Log.d( TAG, "Signed up successfully" )
-                        // Signed up successfully, give him welcome for the first time
-                        navigateToHome( R.string.welcome_first_time )
-
+                        // Signed up successfully, navigate to Home fragment
+                        transition.openFragment( HomeFragment.newInstance( R.string.welcome_first_time ) )
                     }
                     else {
                         Log.e( TAG, "Error signing up" )
@@ -82,10 +100,4 @@ class SignInActivity : AppCompatActivity() {
         return true
     }
 
-    private fun navigateToHome( welcomeMessage: Int ) {
-        val intent = Intent(this, HomeActivity::class.java)
-        intent.flags =  Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-        intent.putExtra( Constants.WELCOME_MESSAGE_KEY, welcomeMessage )
-        startActivity( intent )
-    }
 }
