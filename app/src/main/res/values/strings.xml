@@ -6,8 +6,21 @@
     <string name="welcome_back">Welcome Back to YallaSa7el</string>
     <string name="username">UserName</string>
     <string name="password">Password</string>
-    <string name="empty_email_password">Please Enter your email and password</string>
+    <string name="empty_email_password">Please enter your email and password</string>
     <string name="error_signing_in">Unexpected error occurred while signing in, Please try again</string>
     <string name="error_signing_out">Unexpected error occurred while signing out, Please try again</string>
     <string name="sign_out">Sign Out</string>
+    <string name="your_destination">Your Destination</string>
+    <string name="preferred_rooms">Preferred Number of Rooms</string>
+    <string name="find">Find</string>
+    <string name="destination_">Destination:</string>
+    <string name="address_">Address:</string>
+    <string name="rooms_">Number of Rooms:</string>
+    <string name="bathrooms_">Number of Bathrooms:</string>
+    <string name="baseprice_">Base Price(L.E per week):</string>
+    <string name="ownername_">Owner Name:</string>
+    <string name="ownerphone_">Owner Mobil Number:</string>
+    <string name="empty_destination">Please enter your destination</string>
+    <string name="rooms_not_number">Please enter a valid number of rooms</string>
+    <string name="empty_list_text">No spaces matched, Try different destination or number of rooms</string>
 </resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/space_title"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        style="@style/space_item" />
+
+    <TextView
+        android:id="@+id/space_destination"
+        style="@style/space_item" />
+
+    <TextView
+        android:id="@+id/space_address"
+        style="@style/space_item" />
+
+    <TextView
+        android:id="@+id/space_rooms"
+        style="@style/space_item" />
+
+    <TextView
+        android:id="@+id/space_bathrooms"
+        style="@style/space_item" />
+
+    <TextView
+        android:id="@+id/space_baseprice"
+        style="@style/space_item" />
+
+    <TextView
+        android:id="@+id/space_ownername"
+        style="@style/space_item" />
+
+    <TextView
+        android:id="@+id/space_ownerphone"
+        style="@style/space_item" />
+
+</LinearLayout>

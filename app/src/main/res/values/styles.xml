@@ -15,4 +15,10 @@
         <item name="android:layout_marginRight">@dimen/default16_margin</item>
     </style>
 
+    <style name="space_item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/default8_margin</item>
+    </style>
+
 </resources>
