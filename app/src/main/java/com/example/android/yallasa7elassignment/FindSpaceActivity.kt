@@ -56,10 +56,12 @@ class FindSpaceActivity : AppCompatActivity() {
             // Handle empty list
             if ( spaceList == null ) {
                 query_empty_list_text.visibility = View.VISIBLE
+                query_list.visibility = View.GONE
             }
             else {
                 // create the adapter, and bind it with the list view
                 val adapter = SpaceAdapter( this, spaceList )
+                query_list.visibility = View.VISIBLE
                 query_list.adapter = adapter
             }
         }
