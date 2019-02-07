@@ -10,6 +10,7 @@
     <string name="error_signing_in">Unexpected error occurred while signing in, Please try again</string>
     <string name="error_signing_out">Unexpected error occurred while signing out, Please try again</string>
     <string name="error_inserting_space">Unexpected error occurred while inserting space, Please try again</string>
+    <string name="space_exists">A space with the same provided info already exists</string>
     <string name="space_inserted">Space Inserted Successfully</string>
     <string name="sign_out">Sign Out</string>
     <string name="find_space">Find Space</string>

@@ -70,29 +70,37 @@ public class YallaSa7elDBHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean insertSpace( Space space, SQLiteDatabase database ) {
+    public int insertSpace( Space space, SQLiteDatabase database ) {
         Log.d(TAG, "insertSpace method executes");
-
-        // Construct the content values object with the given space info
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(YallaSa7elContract.Space.COLUMN_TITLE, space.getTitle());
-        contentValues.put(YallaSa7elContract.Space.COLUMN_DESTINATION, space.getDestination());
-        contentValues.put(YallaSa7elContract.Space.COLUMN_ADDRESS, space.getAddress());
-        contentValues.put(YallaSa7elContract.Space.COLUMN_NUMBER_OF_ROOMS, space.getNumberOfRooms());
-        contentValues.put(YallaSa7elContract.Space.COLUMN_NUMBER_OF_BATHROOMS, space.getNumberOfBathrooms());
-        contentValues.put(YallaSa7elContract.Space.COLUMN_BASE_PRICE, space.getBasePrice());
-        contentValues.put(YallaSa7elContract.Space.COLUMN_OWNER_NAME, space.getOwnerName());
-        contentValues.put(YallaSa7elContract.Space.COLUMN_MOBILE_NUMBER, space.getMobileNumber());
-
-        if ( database.insert(YallaSa7elContract.Space.TABLE_NAME, null, contentValues) != -1 ) {
-            Log.d(TAG, "Space inserted successfully");
-            // Successful insertion operation
-            return true;
+        // Check if the space already exists in database
+        if ( checkIfSpaceExists( space, database ) ) {
+            // return -1 indicating that the space exists
+            return -1;
         }
         else {
-            Log.e(TAG, "Error while inserting a space");
-            // Failure insertion operation
-            return false;
+            // Insert the space
+
+            // Construct the content values object with the given space info
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(YallaSa7elContract.Space.COLUMN_TITLE, space.getTitle());
+            contentValues.put(YallaSa7elContract.Space.COLUMN_DESTINATION, space.getDestination());
+            contentValues.put(YallaSa7elContract.Space.COLUMN_ADDRESS, space.getAddress());
+            contentValues.put(YallaSa7elContract.Space.COLUMN_NUMBER_OF_ROOMS, space.getNumberOfRooms());
+            contentValues.put(YallaSa7elContract.Space.COLUMN_NUMBER_OF_BATHROOMS, space.getNumberOfBathrooms());
+            contentValues.put(YallaSa7elContract.Space.COLUMN_BASE_PRICE, space.getBasePrice());
+            contentValues.put(YallaSa7elContract.Space.COLUMN_OWNER_NAME, space.getOwnerName());
+            contentValues.put(YallaSa7elContract.Space.COLUMN_MOBILE_NUMBER, space.getMobileNumber());
+
+            if ( database.insert(YallaSa7elContract.Space.TABLE_NAME, null, contentValues) != -1 ) {
+                Log.d(TAG, "Space inserted successfully");
+                // Successful insertion operation
+                return 1;
+            }
+            else {
+                Log.e(TAG, "Error while inserting a space");
+                // Failure insertion operation
+                return 0;
+            }
         }
     }
 
@@ -177,9 +185,42 @@ public class YallaSa7elDBHelper extends SQLiteOpenHelper {
 
 
     /*
+    Given a space object check if it has been inserted in database before or not
+     */
+    private boolean checkIfSpaceExists(Space space, SQLiteDatabase database) {
+        Log.d(TAG, "checkIfSpaceExists method executes");
+
+        // Construct the columns array
+        String columns[] = {YallaSa7elContract.Space._ID };
+
+        // Construct the where clause based on the given object
+        String where = YallaSa7elContract.Space.COLUMN_TITLE + "=\"" + space.getTitle() + "\" AND " +
+                YallaSa7elContract.Space.COLUMN_DESTINATION + "=\"" + space.getDestination() + "\" AND " +
+                YallaSa7elContract.Space.COLUMN_ADDRESS + "=\"" + space.getAddress() + "\" AND " +
+                YallaSa7elContract.Space.COLUMN_NUMBER_OF_ROOMS + "=" + space.getNumberOfRooms() + " AND " +
+                YallaSa7elContract.Space.COLUMN_NUMBER_OF_BATHROOMS + "=" + space.getNumberOfBathrooms() + " AND " +
+                YallaSa7elContract.Space.COLUMN_BASE_PRICE + "=" + space.getBasePrice() + " AND " +
+                YallaSa7elContract.Space.COLUMN_OWNER_NAME + "=\"" + space.getOwnerName() + "\" AND " +
+                YallaSa7elContract.Space.COLUMN_MOBILE_NUMBER + "=\"" + space.getMobileNumber() + "\"";
+
+        Cursor cursor = database.query( YallaSa7elContract.Space.TABLE_NAME, columns, where, null, null, null, null );
+        if ( cursor.getCount() > 0 ) {
+            Log.d( TAG, "Space already exists" );
+            cursor.close();
+            return true;
+        }
+        else {
+            Log.d( TAG, "Space does not exist" );
+            cursor.close();
+            return false;
+        }
+    }
+
+
+    /*
     Insert new user in Users table
      */
-    public boolean insertUser(User user, SQLiteDatabase database) {
+    private boolean insertUser(User user, SQLiteDatabase database) {
         Log.d(TAG, "insertUser method executes");
 
         // Construct content values object with the given user info
@@ -203,7 +244,7 @@ public class YallaSa7elDBHelper extends SQLiteOpenHelper {
     /*
     Given a userName and his password check if he exists or not
      */
-    public boolean checkIfUserExists( User user, SQLiteDatabase database ) {
+    private boolean checkIfUserExists( User user, SQLiteDatabase database ) {
         Log.d(TAG, "checkIfUser method executes");
 
         String userName = user.getUserName();
@@ -255,7 +296,7 @@ public class YallaSa7elDBHelper extends SQLiteOpenHelper {
     /*
     Set signed in state value to 1 indicating that a user is signed in
      */
-    public boolean setSignedInState(SQLiteDatabase database) {
+    private boolean setSignedInState(SQLiteDatabase database) {
         Log.d(TAG, "setSignedInState method executes");
 
         // Construct content values object with state set to 1
@@ -278,7 +319,7 @@ public class YallaSa7elDBHelper extends SQLiteOpenHelper {
     /*
     Clear the signed in state to 0 indicating that the user logged out
      */
-    public boolean clearSignedInState(SQLiteDatabase database) {
+    private boolean clearSignedInState(SQLiteDatabase database) {
         // Delete all rows which is exactly one
         if( database.delete(SignedInState.TABLE_NAME, "1", null) == 1 ) {
             Log.d(TAG, "Successfully cleared state");

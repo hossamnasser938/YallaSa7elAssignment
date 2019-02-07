@@ -3,6 +3,7 @@ package com.example.android.yallasa7elassignment
 import android.database.sqlite.SQLiteDatabase
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.android.yallasa7elassignment.data.Space
@@ -39,6 +40,7 @@ class AddSpaceActivity : AppCompatActivity() {
             val ownerPhone = add_ownerphone_edit_text.text.toString().trim()
 
             if ( !validateInputs( title, destination, address, rooms, bathrooms, basePrice, ownerName, ownerPhone ) ) {
+                Log.d( TAG, "some empty fields" )
                 return@setOnClickListener
             }
 
@@ -51,6 +53,7 @@ class AddSpaceActivity : AppCompatActivity() {
                 bathroomsInt = bathrooms.toInt()
                 basePriceInt = basePrice.toInt()
             } catch ( e: NumberFormatException ) {
+                Log.d( TAG, "some non numeric fields" )
                 add_error_text.visibility = View.VISIBLE
                 add_error_text.text = getString(R.string.not_numeric_add_fields)
                 return@setOnClickListener
@@ -58,10 +61,23 @@ class AddSpaceActivity : AppCompatActivity() {
 
             val spaceObj = Space( title, destination, address, roomsInt, bathroomsInt, basePriceInt, ownerName, ownerPhone )
 
-            if ( dBHelper.insertSpace( spaceObj, database ) ) {
+            val insertionState : Int = dBHelper.insertSpace( spaceObj, database )
+
+            if ( insertionState == -1 ) {
+                Log.d( TAG, "Space already exists" )
+                // Space already exists
+                add_error_text.visibility = View.VISIBLE
+                add_error_text.text = getString(R.string.space_exists)
+            }
+            else if ( insertionState == 1 ) {
+                Log.d( TAG, "successful insertion" )
+                // successful insertion
+                add_error_text.visibility = View.GONE
                 Toast.makeText( this, R.string.space_inserted, Toast.LENGTH_LONG ).show()
             }
             else {
+                Log.d( TAG, "failure insertion" )
+                // failure insertion
                 add_error_text.visibility = View.VISIBLE
                 add_error_text.text = getString(R.string.error_inserting_space)
             }
