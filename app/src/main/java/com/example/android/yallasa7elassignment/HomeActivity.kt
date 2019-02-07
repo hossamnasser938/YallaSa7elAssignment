@@ -62,6 +62,12 @@ class HomeActivity : AppCompatActivity() {
                     Toast.makeText( this, R.string.error_signing_out, Toast.LENGTH_LONG ).show()
                 }
             }
+            R.id.find_space -> {
+                navigateToFindSpace()
+            }
+            R.id.add_space -> {
+
+            }
         }
         return true
     }
@@ -69,6 +75,11 @@ class HomeActivity : AppCompatActivity() {
     private fun navigateToSignIn() {
         val intent = Intent( this, SignInActivity::class.java )
         intent.flags =  Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity( intent )
+    }
+
+    private fun navigateToFindSpace() {
+        val intent = Intent( this, FindSpaceActivity::class.java )
         startActivity( intent )
     }
 }

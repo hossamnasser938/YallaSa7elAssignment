@@ -6,4 +6,12 @@
         android:title="@string/sign_out"
         app:showAsAction="never" />
 
+    <item android:id="@+id/find_space"
+        android:title="@string/find_space"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/add_space"
+        android:title="@string/add_space"
+        app:showAsAction="never" />
+
 </menu>

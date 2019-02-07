@@ -10,6 +10,8 @@
     <string name="error_signing_in">Unexpected error occurred while signing in, Please try again</string>
     <string name="error_signing_out">Unexpected error occurred while signing out, Please try again</string>
     <string name="sign_out">Sign Out</string>
+    <string name="find_space">Find Space</string>
+    <string name="add_space">Add Space</string>
     <string name="your_destination">Your Destination</string>
     <string name="preferred_rooms">Preferred Number of Rooms</string>
     <string name="find">Find</string>
