@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.example.android.yallasa7elassignment.data.User
 import com.example.android.yallasa7elassignment.data.YallaSa7elDBHelper
 import kotlinx.android.synthetic.main.activity_sign_in.*
@@ -28,15 +29,20 @@ class SignInActivity : AppCompatActivity() {
     private fun handleSignInUPButton() {
         login_button.setOnClickListener {
             Log.d( TAG, "Login Button clicked" )
+            // Hide error text if it is visible
+            login_error_text_view.visibility = View.GONE
 
+            // extract user inputs
             val userName = login_username_edit_text.text.toString().trim()
             val password = login_password_edit_text.text.toString().trim()
 
+            // validate inputs
             if ( !validateInputs( userName, password ) ) {
                 Log.d( TAG, "Error on validation" )
                 return@setOnClickListener
             }
 
+            // Construct user object and sign in/up
             val user = User( userName, password )
             if ( dBHelper.signIn( user, database ) ) {
                 Log.d( TAG, "Signed in successfully" )
@@ -69,6 +75,7 @@ class SignInActivity : AppCompatActivity() {
 
     private fun validateInputs(userName: String, password: String): Boolean {
         if ( userName.isEmpty() or password.isEmpty() ) {
+            login_error_text_view.visibility = View.VISIBLE
             login_error_text_view.text = getString( R.string.empty_email_password )
             return false
         }
@@ -79,5 +86,6 @@ class SignInActivity : AppCompatActivity() {
         val intent = Intent(this, HomeActivity::class.java)
         intent.flags =  Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         intent.putExtra( Constants.WELCOME_MESSAGE_KEY, welcomeMessage )
+        startActivity( intent )
     }
 }

@@ -44,7 +44,7 @@ public class YallaSa7elDBHelper extends SQLiteOpenHelper {
 
     public boolean signIn( User user, SQLiteDatabase database ) {
         Log.d(TAG, "signIn method executes");
-        return checkIfUserExists( user, database );
+        return checkIfUserExists( user, database ) && setSignedInState( database );
     }
 
 
