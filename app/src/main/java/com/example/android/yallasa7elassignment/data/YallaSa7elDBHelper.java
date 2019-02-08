@@ -373,16 +373,31 @@ public class YallaSa7elDBHelper extends SQLiteOpenHelper {
     }
 
     private void initializeSpaceTable(SQLiteDatabase database) {
-        // TODO: Populate the Space table with the what attached in the mail
-        // For testing
-        Space temp1 = new Space("Apartment at Taha", "Taha", "Menia", 3, 2, 5000, "Ahmed Hamdy", "010");
-        Space temp2 = new Space("Villa at Taha", "Taha", "Menia", 10, 4, 20000, "Abo Elshiekh", "010");
-        Space temp3 = new Space("Apartment at Bouga", "Bouga", "Menia", 2, 1, 2000, "Hossam Naser", "010");
-        Space temp4 = new Space("Villa at Bouga", "Bouga", "Menia", 5, 2, 10000, "Ahmed Hamdy", "010");
+        Space initialSpaces[] = {
+                new Space("Lagoon view , One bedroom apartment ,Gouna", "Gouna", "Red Sea", 1, 1, null, "David Fahmi", "1281846240"),
+                new Space("Charming Villa in Gouna", "Gouna", "Qesm Hurghada", 4, 4, null, "Ahmed Fathy", "1001889961"),
+                new Space("Amazing Apartment In Gouna", "Gouna", "Red Sea", 1, 1, 14000, "Hisham khalil", "1223431321"),
+                new Space("Amazing chalet in Gouna", "Gouna", "Qesm Hurghada", 1, 1, 9800, "Bishoy Tawfik", "1110111651"),
+                new Space("Luxury Villa In Gouna", "Gouna", "Red Sea", 3, 4, null, "Ayman el mahgoub", "1206161689"),
+                new Space("Villa For rent In Gouna", "Gouna", "Red Sea", 3, 3, 24500, "Ahmed", "1223655585"),
+                new Space("Serenity apartment in Dahab", "Dahab", "Qesm Saint Katrin", 2, 1, 2800, "Sophie Rady", "1006144224"),
+                new Space("Lagoon bay view dahab villa", "Dahab", "Qesm Saint Katrin", 3, 2, 5000, "Mohamed seif", "1011011919"),
+                new Space("Studio For Rent In Dahab", "Dahab", " Dahab", 1, 1, 5250, "Ahmed Ossama", "1200091717"),
+                new Space("Amazing Sea View Chalet", "Sahl Hasheesh", "Red Sea", 2, 1, 9100, "Ahmed Hammam", "1012638800"),
+                new Space("Amazing sea and pool view apartment, Sahl Hasheesh", "Sahl Hasheesh", "Red Sea", 1, 1, 4291, "Sahar Mostafa", "1033433775"),
+                new Space("Cozy Chalet In Sahl Hasheesh", "Sahl Hasheesh", "Red Sea", 2, 2, 10500, "Abdelmoaz Gebril", "1118719790"),
+                new Space("Charming Villa In Hurghada", "Hurghada", "Qesm Hurghada", 3, 2, 10500, "Mohamed el wakeel", "1004707596"),
+                new Space("Charming flat In Hurghada", "Hurghada", "Qesm Hurghada", 3, 1, 3500, "khaled ahmed", "1283999903"),
+                new Space("Private Room in Hurghada", "Hurghada", "Red Sea", 1, 1, 5250, "Amr Fathy", "1069872713"),
+                new Space("Chalet For Rent In Ain El Sokhna", "Sokhna", "Ain Sukhna", 2, 1, 5950, "Ahmed", "1146539699"),
+                new Space("Villa in Ain Sukhna", "sokhna", "Suez Governorate", 3, 3, null, "Wael ahmed", "1095474990"),
+                new Space("Chalet for rent in Ain El Sokhna", "Sokhna", "Ain Sukhna", 2, 2, 4900, "Peter", "1222157698"),
+                new Space("Double Room In Dehiba Resort Siwa", "Siwa", "Siwa", 1, 1, 3500, "Mostafa/ Dehiba", "1000883388"),
+                new Space("A Single Room In Ekadolli Guest House, Nouba, Aswan", "Nouba", "Aswan", 1, 1, null, "khaled / Ekadolli", "1111416243")
+        };
 
-        insertSpace(temp1, database);
-        insertSpace(temp2, database);
-        insertSpace(temp3, database);
-        insertSpace(temp4, database);
+        for (Space space : initialSpaces) {
+            insertSpace(space, database);
+        }
     }
 }

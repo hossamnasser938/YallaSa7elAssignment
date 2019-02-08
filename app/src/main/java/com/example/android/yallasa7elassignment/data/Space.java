@@ -7,12 +7,12 @@ public class Space {
     private String address;
     private int numberOfRooms;
     private int numberOfBathrooms;
-    private int basePrice;
+    private Integer basePrice;
     private String ownerName;
     private String mobileNumber;
 
     public Space(String title, String destination, String address, int numberOfRooms,
-                 int numberOfBathrooms, int basePrice, String ownerName, String mobileNumber) {
+                 int numberOfBathrooms, Integer basePrice, String ownerName, String mobileNumber) {
         this.title = title;
         this.destination = destination;
         this.address = address;
@@ -64,11 +64,11 @@ public class Space {
         this.numberOfBathrooms = numberOfBathrooms;
     }
 
-    public int getBasePrice() {
+    public Integer getBasePrice() {
         return basePrice;
     }
 
-    public void setBasePrice(int basePrice) {
+    public void setBasePrice(Integer basePrice) {
         this.basePrice = basePrice;
     }
 
