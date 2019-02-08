@@ -27,15 +27,19 @@ class SignInFragment : Fragment() {
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        // Set the title
+        activity?.title = getString( R.string.sign_in_up )
+
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate( R.layout.fragment_signin, container, false )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        //Hide options menu
-        setHasOptionsMenu( false )
 
         transition = activity as HomeFragment.HomeTransitionInterface
 

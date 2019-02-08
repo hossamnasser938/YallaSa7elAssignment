@@ -10,19 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".HomeActivity"
-            android:label="@string/home">
+            android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SignInActivity"
-            android:label="@string/sign_in_up" />
-        <activity android:name=".FindSpaceActivity" />
-        <activity android:name=".AddSpaceActivity"></activity>
+
+        <activity android:name=".FindSpaceActivity"
+            android:label="@string/find_space" />
+
+        <activity android:name=".AddSpaceActivity"
+            android:label="@string/add_space" />
     </application>
 
 </manifest>
